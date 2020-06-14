@@ -1,6 +1,8 @@
 # Overview
 This is a very simple, bare-bones NodeJS and ExpressJS project created for you to use with Docker.
 
+* NB: [Link to the original Udacity repo](https://github.com/udacity/nd9990-c3-microservices-exercises/tree/master/lesson-5-kubernetes-for-production/exercises/simple-express)
+
 # Local Setup
 * Install dependencies: `npm install`
 * Run server: `node server.js`
