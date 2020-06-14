@@ -6,6 +6,9 @@ metadata:
   name: simple-express
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: simple-express
   template:
     metadata:
       labels:
