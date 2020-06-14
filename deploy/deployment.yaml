@@ -1,27 +1,27 @@
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: simple-express
   labels:
-    app: simple-express
+    service: simple-express
+  name: simple-express
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: simple-express
   template:
     metadata:
       labels:
-        app: simple-express
+        service: simple-express
     spec:
       containers:
-      - name: simple-express
-        image: isjustintime/simple-express
+      - image: rebekkahaley/simple-express
+        name: simple-express
+        imagePullPolicy: Always          
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"       
         ports:
         - containerPort: 8080
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8080
-          initialDelaySeconds: 3
-          periodSeconds: 3
+      restartPolicy: Always
