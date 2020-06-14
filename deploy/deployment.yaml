@@ -5,7 +5,7 @@ metadata:
   labels:
     app: simple-express
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: simple-express
@@ -15,7 +15,13 @@ spec:
         app: simple-express
     spec:
       containers:
-      - name: simple-api
+      - name: simple-express
         image: rebekkahaley/simple-express
         ports:
-        - containerPort: 80
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 3
